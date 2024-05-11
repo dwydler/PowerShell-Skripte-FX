@@ -12,8 +12,8 @@ function Set-PrtgError {
         [ValidateNotNullOrEmpty()]
 		[string]$PrtgErrorText
 	)
-	
-    $strXmlOutput = "<prtg>`n"
+	$strXmlOutput = "<?xml version=`"1.0`" encoding=`"utf-8`" standalone=`"yes`" ?>`n"
+    $strXmlOutput += "<prtg>`n"
     $strXmlOutput += "`t<error>1</error>`n"
     $strXmlOutput += "`t<text>$PrtgErrorText</text>`n"
     $strXmlOutput += "</prtg>"
