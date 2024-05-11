@@ -4,7 +4,7 @@ function Write-Log {
     Param (
         [Parameter(Mandatory, Position=0)]
         [ValidateNotNullOrEmpty()]
-        [string] $LogText,
+        [string] $LogText = "",
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
@@ -35,7 +35,7 @@ function Write-Log {
         $strLogFileHeader += "{0,-21} {1,0}" -f "# Skript:", "$($MyInvocation.ScriptName)`n"
         $strLogFileHeader += "{0,-21} {1,0}" -f "# Startzeit:", "$(Get-Date -Format "dd.MM.yyyy HH:mm:ss")`n"
         $strLogFileHeader += "{0,-21} {1,0}" -f "# Startzeit:", "$(Get-Date -Format "dd.MM.yyyy HH:mm:ss")`n"
-        $strLogFileHeader += "{0,-21} {1,0}" -f "# Benutzerkonto:", "$([Security.Principal.WindowsIdentity]::GetCurrent().Name)`n"
+        $strLogFileHeader += "{0,-21} {1,0}" -f "# Ausführendes Konto:", "$([Security.Principal.WindowsIdentity]::GetCurrent().Name)`n"
         $strLogFileHeader += "{0,-21} {1,0}" -f "# Computername:", "$env:COMPUTERNAME`n"
         $strLogFileHeader += "$("#" * 120)`n"
 
@@ -71,7 +71,6 @@ function Write-Log {
     Write-Host $LogText -ForegroundColor $strTextColor
 
     # Write output to logfile
-    Start-Sleep -Milliseconds 100
     Add-Content -Path $strLogfile -Value $LogText -Encoding UTF8
 
     # Add Logfile to local Eventlog of the operating system 
@@ -86,11 +85,11 @@ function Delete-Log {
 	Param (
         [Parameter(Mandatory, Position=0)]
         [ValidateNotNullOrEmpty()]
-        [string] $Path,
+        [string] $Path = "",
 		
 		[Parameter(Mandatory, Position=1)]
         [ValidateNotNullOrEmpty()]
-        [string] $RetentionDay
+        [string] $RetentionDays = ""
     )
 	
     # Delete all files in directory, which are older than defined value
