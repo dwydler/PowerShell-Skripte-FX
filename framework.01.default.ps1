@@ -126,5 +126,30 @@ function String-Trimming {
     }
 
     return $strTrimmedString
-  
+}
+
+
+# -----------------------------------------------------------------------------
+# Type: 		    Function
+# Name: 		    Get-HashAlgorithmus
+# Description:	    Generating a file using a hash algorithm
+# Parameters:		
+# Return Values:	Hash Algorithmus
+# Requirements:					
+# -----------------------------------------------------------------------------
+function Get-HashAlgorithmus {
+	
+	Param (
+		[Parameter(Mandatory=$true)]
+        [ValidateSet('sha256','sha384','sha512')]
+		[string] $Type
+	)
+
+    switch($type) {
+        "sha256" { return [System.Security.Cryptography.SHA256]::Create() }
+        "sha384" { return [System.Security.Cryptography.SHA384]::Create() }
+        "sha512" { return [System.Security.Cryptography.SHA512]::Create() }
+        
+        default { Write-Host "Unsupported SHA hashing algorithm." }
+    }
 }
