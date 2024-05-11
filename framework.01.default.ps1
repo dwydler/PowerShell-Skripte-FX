@@ -89,3 +89,42 @@ function HumanReadableByteSize {
 	}
 }
 
+
+# -----------------------------------------------------------------------------
+# Type: 		    Function
+# Name: 		    String-Trimming
+# Description:	    Truncation of decimal places for numbers that are treated as a character string.
+# Parameters:		
+# Return Values:	
+# Requirements:					
+# -----------------------------------------------------------------------------
+function String-Trimming {
+	Param (
+		[Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+		[string] $String,
+
+		[Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+		[int] $Length
+	)
+	
+    #
+    [array] $pValue = $String -split "\."
+
+    #
+    if ($pValue[1].Length -gt $Length) {
+        
+        #
+        $pValue += $pValue[1].Substring(0,$Length)
+
+        #
+        [string] $strTrimmedString = "$($pValue[0]).$($pValue[2])"
+    }
+    else {
+        [string] $strTrimmedString = $String
+    }
+
+    return $strTrimmedString
+  
+}

@@ -130,6 +130,11 @@ function Set-PrtgResult {
         [Parameter(mandatory=$False)]
         [ValidateSet('One','Kilo','Mega','Giga','Tera','Byte','KiloByte','MegaByte','GigaByte','TeraByte','Bit','KiloBit','MegaBit','GigaBit','TeraBit')]
         [string]$VolumeSize,
+		
+		# Veeam Backup & Replication / Job Monitoring
+		[Parameter(mandatory=$False)]
+        [ValidateSet('Second','Minute','Hour','Day')]
+        [string]$SpeedTime,
     
         [Parameter(mandatory=$False)]
         [alias('dm')]
@@ -170,6 +175,7 @@ function Set-PrtgResult {
     if ($LimitMode)          { $Result += "`t`t<limitmode>1</limitmode>`n" }
     if ($SpeedSize)          { $Result += "`t`t<speedsize>$SpeedSize</speedsize>`n" }
     if ($VolumeSize)         { $Result += "`t`t<volumesize>$VolumeSize</volumesize>`n" }
+    if ($SpeedTime)			 { $Result += "`t`t<speedtime>$SpeedTime</speedtime>`n" }	
     if ($DecimalMode)        { $Result += "`t`t<decimalmode>$DecimalMode</decimalmode>`n" }
     if ($Warning)            { $Result += "`t`t<warning>1</warning>`n" }
     if ($ValueLookup)        { $Result += "`t`t<ValueLookup>$ValueLookup</ValueLookup>`n" }
