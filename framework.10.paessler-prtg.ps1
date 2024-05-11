@@ -161,7 +161,7 @@ function Set-PrtgResult {
     }
     elseif ($Unit) {
         $Result += "`t`t<unit>custom</unit>`n"
-    $Result += "`t`t<customunit>$Unit</customunit>`n"
+		$Result += "`t`t<customunit>$Unit</customunit>`n"
     }
     
     if (!($Value -is [int])) { $Result += "`t`t<float>1</float>`n" }
