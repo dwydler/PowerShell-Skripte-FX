@@ -87,7 +87,7 @@ function Set-PrtgResult {
         [Parameter(mandatory=$True,Position=1)]
         $Value,
     
-        [Parameter(mandatory=$True,Position=2)]
+        [Parameter(mandatory=$false,Position=2)]
         [string]$Unit,
 
         [Parameter(mandatory=$False)]

@@ -133,3 +133,16 @@ function Set-WorkingDir {
     # In das Verzeichnis wechseln
     Set-Location $strWorkingdir
 }
+
+
+# -----------------------------------------------------------------------------
+# Type: 		    Function
+# Name: 		    Check-IsIPv4Address
+# Description:	    Checks whether the specified string is an IPv4 address
+# Parameters:		Presumed IPv4 address
+# Return Values:	True/False
+# Requirements:					
+# -----------------------------------------------------------------------------
+function Check-IsIPv4Address ($ip) {
+    return ($ip -match "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$" -and [bool]($ip -as [ipaddress]))
+}
