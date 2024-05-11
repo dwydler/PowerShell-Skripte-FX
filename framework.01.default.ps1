@@ -1,9 +1,9 @@
 # -----------------------------------------------------------------------------
 # Type: 		    Function
 # Name: 		    Set-WorkingDir
-# Description:	    
-# Parameters:		
-# Return Values:	
+# Description:	    Changes to the directory where the script is running.
+# Parameters:		None
+# Return Values:	None
 # Requirements:					
 # -----------------------------------------------------------------------------
 function Set-WorkingDir {
